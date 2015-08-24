@@ -13,6 +13,7 @@
     <body>
     	<div class="container">
         <h2>Products</h2>
+        <div style="color:green"><?= $this->session->flashdata('message'); ?></div>
         <table class="table table-striped table-bordered">
         	<thead>
         		<tr>

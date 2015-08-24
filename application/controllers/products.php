@@ -51,6 +51,7 @@ class Products extends CI_Controller {
 	public function delete($id)
 	{
 		$this->product->delete($id);
+		$this->session->set_flashdata('message', "Product is deleted successfully!");
 		redirect('/products/index');
 	}
 }
