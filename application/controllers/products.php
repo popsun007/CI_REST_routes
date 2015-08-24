@@ -29,7 +29,18 @@ class Products extends CI_Controller {
 	}
 	public function add()
 	{
-		$this->product->create($this->input->post());
+		$this->load->library("form_validation");
+		$this->form_validation->set_rules("name", "Product Name", "trim|required");
+		$this->form_validation->set_rules("price", "Price", "required|decimal");
+		if($this->form_validation->run() === TRUE){
+			$this->product->create($this->input->post());
+			$this->session->set_flashdata('message', 'Product is added successfully!');
+		}
+		else
+		{
+			$this->session->set_flashdata('errors', validation_errors());
+			redirect('/products/create');
+		}
 		redirect('/products/index');
 	}
 	public function update($id)

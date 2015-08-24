@@ -23,6 +23,7 @@
         	<div><input type="submit" value="Create"></div>
         </form>
         <a href="/">Go back</a>
+		<div style="color:red;"><?= $this->session->flashdata('errors');?></div>
         </div>
     </body>
 </html>
